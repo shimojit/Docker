@@ -1,0 +1,30 @@
+services:
+  backend:
+    image: openjdk:24
+    depends_on:
+      - postgresql-testdb
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../Web/public/portfolio/backend:/backend
+    tty: true
+  postgresql-testdb:
+    image: postgres:16.4
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+    volumes:
+      - testdb-data:/var/lib/postgresql/data
+  pgadmin4:
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 0liberty4life@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8081:81"
+    volumes:
+      - pgadmin4-data:/var/lib/pgadmin
+volumes:
+  testdb-data:
+  pgadmin4-data:
