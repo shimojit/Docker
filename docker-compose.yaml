@@ -25,7 +25,7 @@ services:
     depends_on:
       - postgresql-testdb
     ports:
-      - "8081:81"
+      - "8081:80"
     volumes:
       - pgadmin4-data:/var/lib/pgadmin
 volumes:
