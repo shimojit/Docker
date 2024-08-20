@@ -1,5 +1,6 @@
+version: '3.8'
 services:
-  backend:
+  backend-java-dev:
     image: openjdk:24
     depends_on:
       - postgresql-testdb
@@ -21,6 +22,8 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: 0liberty4life@gmail.com
       PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - postgresql-testdb
     ports:
       - "8081:81"
     volumes:
